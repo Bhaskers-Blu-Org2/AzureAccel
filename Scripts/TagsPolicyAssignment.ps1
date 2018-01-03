@@ -9,7 +9,7 @@ $policyURI = 'https://raw.githubusercontent.com/Azure/azure-policy/master/sample
 $PolicyParamsURI = 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/ResourceGroup/enforce-resourceGroup-tags/azurepolicy.parameters.json'
 $definition
 $assignmentname = "Tags Policy Assignment"
-# Enter the Regions you want to allow below
+# Enter the mandatory tags and values you want to enforce below
 $tagName = "Environment"
 $tagValue = "Development"
 # Enter the Sandbox resource group name you want to exclude from the policy assignment
