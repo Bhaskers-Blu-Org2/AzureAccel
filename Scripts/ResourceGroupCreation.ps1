@@ -1,8 +1,10 @@
-## This will create a resource group in your subscription
-## Please modify the variables then execute the script
-$RGName = "Sandbox-RG"
-$Location = "eastus"
-$Tags = @{ Department = "IT"; Environment= "Sandbox" }
-
-$CreateRG = New-AzureRMResourceGroup -Name $RGName -Location $Location -Tag $Tags -Force
-$CreateRG
+Param(
+    [Parameter(Mandatory=$true)][string]$ProjectCode,
+    [Parameter(Mandatory=$true)][string]$ResourceGroupName,
+    [Parameter(Mandatory=$true)][string]$AzureRegion,
+    [Parameter(Mandatory=$true)][string]$EnvironmentName
+     ) 
+# The tag key below will be created everytime, as we will be enforcing a policy for its presence later
+$mandatoryTag = "Project"
+$rgcreate = New-AzureRMResourceGroup -Name $ResourceGroupName -Location $AzureRegion -Tag @{ $mandatoryTag = $ProjectCode; Environment= $EnvironmentName }
+$rgcreate
