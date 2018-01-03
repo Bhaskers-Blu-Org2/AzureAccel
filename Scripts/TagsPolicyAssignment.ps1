@@ -10,7 +10,8 @@ $PolicyParamsURI = 'https://raw.githubusercontent.com/Azure/azure-policy/master/
 $definition
 $assignmentname = "Tags Policy Assignment"
 # Enter the Regions you want to allow below
-$Tags = "canadacentral","canadaeast"
+$tagName = "Environment"
+$tagValue = "Development"
 # Enter the Sandbox resource group name you want to exclude from the policy assignment
 $ExclusionRG = "Sandbox-RG"
 # This will apply the policy to the first subscription retrieved by the cmdlet
@@ -21,5 +22,5 @@ $notscope = $subscope + "/" + $ExclusionRG
 $definition = New-AzureRmPolicyDefinition -Name $policydefname -DisplayName $policydisplayname -description $description -Policy $policyURI  -Parameter $PolicyParamsURI -Mode All
 $definition
 $skutable = @{"Name" = "A1"; "Tier" = "Standard"}
-$assignment = New-AzureRMPolicyAssignment -Name $assignmentname -Scope $subscope -listOfAllowedLocations $locations -PolicyDefinition $definition -Sku $skutable -NotScope $notscope
+$assignment = New-AzureRMPolicyAssignment -Name $assignmentname -Scope $subscope -tagName $tagName -tagValue $tagValue -PolicyDefinition $definition -Sku $skutable -NotScope $notscope
 $assignment
