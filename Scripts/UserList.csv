@@ -1,5 +1,5 @@
-givenname,surname,department,role
-Jean,Tremblay,Finance,Billing
-Lucie,Smith,IT,Contributor
-Jane,Thompson,Research,Reader
-Bob,Laviolette,Security,Security Admin
+givenname,surname,department,role,role2,role3
+Jean,Tremblay,Finance,Billing,Contributor,Reader
+Lucie,Smith,IT,Contributor,Billing,Contributor
+Jane,Thompson,Research,Reader,None,None
+Bob,Laviolette,Security,Security Admin,None,None
