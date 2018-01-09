@@ -60,4 +60,3 @@ $ContributorUsers | ForEach-Object{
 Add-AzureADGroupMember -ObjectId $ContributorGroup.ObjectId -RefObjectId $_.ObjectId
                         }
 
-
