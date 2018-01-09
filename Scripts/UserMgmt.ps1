@@ -2,9 +2,8 @@
 
 ### Mandatory Parameters to ask for at script execution
 Param(
-    [Parameter(Mandatory=$true)][string]$InputFile,
-    [Parameter(Mandatory=$true)][string]$KeyVaultName
-     ) 
+    [Parameter(Mandatory=$true)][string]$InputFile
+      ) 
 
 # Setting up environment for random pw generation
 $PasswordLength = 12
@@ -30,9 +29,9 @@ $newuser = New-AzureADUser -PasswordProfile $PasswordProfile -AccountEnabled $tr
 # For this to work, you will need to specify the name of a key vault in your sub that you can access at script launch
 # If you do not have a key vault or do not wish to use it, you can safely delete the three lines below.
 ########################
-$secretname = $mailnnickname + "PW"
-$secretvalue = ConvertTo-SecureString $PasswordProfile.Password -AsPlainText -Force
-$secret = Set-AzureKeyVaultSecret -VaultName $keyvault.VaultName -Name $secretname  -SecretValue $secretvalue -ContentType "Initial Password"
+#$secretname = $mailnnickname + "PW"
+#$secretvalue = ConvertTo-SecureString $PasswordProfile.Password -AsPlainText -Force
+#$secret = Set-AzureKeyVaultSecret -VaultName $keyvault.VaultName -Name $secretname  -SecretValue $secretvalue -ContentType "Initial Password"
 
 
 }
