@@ -8,3 +8,4 @@ Param(
 $mandatoryTag = "Project"
 $rgcreate = New-AzureRMResourceGroup -Name $ResourceGroupName -Location $AzureRegion -Tag @{ $mandatoryTag = $ProjectCode; Environment= $EnvironmentName }
 $rgcreate
+
