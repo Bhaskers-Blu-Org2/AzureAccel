@@ -39,3 +39,4 @@ $_.ObjectID = $newuser.ObjectID
 
 }
 
+Export-Csv -InputObject $userlist .\
