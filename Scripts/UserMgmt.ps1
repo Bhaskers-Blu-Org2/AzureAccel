@@ -6,10 +6,11 @@ Param(
       ) 
 
 # Setting up environment for random pw generation
+$tenantname = "xxx.onmicrosoft.com"
 $PasswordLength = 12
 $NonAlphCh = 4 
 Add-Type -AssemblyName System.Web
-#$KeyVaultName = "ml11keyvault"
+#$KeyVaultName = "keyvault"
 #Get-AzureRmKeyVault -VaultName $KeyVaultName
 #Importing CSV file and starting iteration through accounts
 $userlist = Import-Csv $InputFile 
@@ -21,7 +22,7 @@ $PasswordProfile = New-Object -TypeName Microsoft.Open.AzureAD.Model.PasswordPro
 $PasswordProfile.Password = ([System.Web.Security.Membership]::GeneratePassword($PasswordLength,$NonAlphCh))
 $mailnnickname = $_.givenname + $_.surname
 $displayname = $_.givenname + " " + $_.surname
-$upn = $_.givenname + "." + $_.surname + "@mlaniel11outlook.onmicrosoft.com"
+$upn = $_.givenname + "." + $_.surname + $tenantname
 $newuser = New-AzureADUser -PasswordProfile $PasswordProfile -AccountEnabled $true -DisplayName $displayname -Department $_.department -GivenName $_.givenname -Surname $_surname -UserPrincipalName $upn -MailNickName $mailnnickname -PostalCode $postalcode -Verbose
 $_.ObjectID = $newuser.ObjectID
 ## Determining the user group and adding them to the right group
