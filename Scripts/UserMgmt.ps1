@@ -22,7 +22,6 @@ $PasswordProfile.Password = ([System.Web.Security.Membership]::GeneratePassword(
 $mailnnickname = $_.givenname + $_.surname
 $displayname = $_.givenname + " " + $_.surname
 $upn = $_.givenname + "." + $_.surname + "@mlaniel11outlook.onmicrosoft.com"
-$usertype = "Member"
 $newuser = New-AzureADUser -PasswordProfile $PasswordProfile -AccountEnabled $true -DisplayName $displayname -Department $_.department -GivenName $_.givenname -Surname $_surname -UserPrincipalName $upn -MailNickName $mailnnickname -PostalCode $postalcode -Verbose
 $_.ObjectID = $newuser.ObjectID
 ## Determining the user group and adding them to the right group
@@ -39,4 +38,5 @@ $_.ObjectID = $newuser.ObjectID
 
 }
 
-Export-Csv -InputObject $userlist .\
+Export-Csv -InputObject $userlist .\userlist2.CSV
+
