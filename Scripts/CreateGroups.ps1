@@ -23,4 +23,3 @@ Add-AzureADGroupMember -ObjectId $BillingGroup.ObjectId -RefObjectId $_.ObjectId
                         }
 
 
-
